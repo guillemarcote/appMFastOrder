@@ -1,16 +1,35 @@
-# fastorder
+⚡️ AppMFastOrder: Sistema de Pedidos Rápido y Móvil
 
-A new Flutter project.
+FastOrder es una aplicación móvil diseñada para optimizar la gestión de pedidos en restaurantes. Está orientada principalmente a Mozos (toma de pedidos, seguimiento de estado) y Administradores/Dueños (gestión de stock e insumos).
 
-## Getting Started
+La aplicación está construida con Angular e Ionic utilizando la arquitectura de Standalone Components para ofrecer una experiencia móvil nativa con tecnologías web.
 
-This project is a starting point for a Flutter application.
+✨ Funciones Principales
 
-A few resources to get you started if this is your first Flutter project:
+Inicio de Sesión: Podes ingresar como administrador, mozo o chef.
+Menú Interactivo: Visualización de productos con imágenes, descripciones y precios.
+Gestión de Carrito: Funcionalidad para agregar, modificar y eliminar artículos antes de finalizar la orden.
+Salón: Disposicion de mesas Ocupado - Disponible.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+🛠️ Tecnologías y Dependencias
+Este proyecto está construido con:
+Tecnología/Dependencia	Uso Principal
+Flutter SDK	Framework de Desarrollo
+Dart	Lenguaje de Programación
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Sigue estos pasos para obtener una copia local del proyecto en funcionamiento.
+Prerrequisitos
+Asegúrate de tener instalado:
+
+Flutter SDK (Versión: [Reemplaza con tu versión de Flutter, ej: 3.22.0])
+Dart SDK
+Editor de Código (Visual Studio Code o Android Studio)
+
+Pasos en Bash:
+Clonar el Repositorio:
+git clone https://github.com/Bisabellaa/appMFastOrder.git
+cd appMFastOrder
+Instalar Dependencias:
+flutter pub get
+flutter run
+
