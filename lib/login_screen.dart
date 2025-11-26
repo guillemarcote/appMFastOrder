@@ -1,7 +1,49 @@
 import 'package:flutter/material.dart';
+// Asegúrate de que la ruta sea correcta
+import 'home_screen.dart'; 
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  // 1. Controladores para los campos de texto
+  final TextEditingController _userController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  // 2. Función de validación y navegación
+  void _attemptLogin() {
+    final String username = _userController.text;
+    final String password = _passwordController.text;
+
+    // Lógica de autenticación simple (puedes reemplazarla con tu lógica real)
+    if (username == 'admin' && password == '1234') {
+      // Éxito: Navegar a la pantalla principal
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
+      );
+    } else {
+      // Fallo: Mostrar un mensaje de error
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Error de inicio de sesión. Usuario o contraseña incorrectos.'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    // Es importante deshacerse de los controladores cuando el widget se elimina
+    _userController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,11 +119,12 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       TextField(
+                        controller: _userController, // Asignar controlador
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.person_outline),
+                          prefixIcon: const Icon(Icons.person_outline),
                           hintText: 'Ingresa tu usuario',
                           filled: true,
-                          fillColor: Color(0xFFF5F5F5),
+                          fillColor: const Color(0xFFF5F5F5),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide.none,
@@ -95,12 +138,13 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       TextField(
+                        controller: _passwordController, // Asignar controlador
                         obscureText: true,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.lock_outline),
+                          prefixIcon: const Icon(Icons.lock_outline),
                           hintText: 'Ingresa tu contraseña',
                           filled: true,
-                          fillColor: Color(0xFFF5F5F5),
+                          fillColor: const Color(0xFFF5F5F5),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide.none,
@@ -111,26 +155,26 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          style:
-                              ElevatedButton.styleFrom(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 14,
-                                ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                elevation: 0,
-                                backgroundColor: Colors.transparent,
-                                shadowColor: Colors.transparent,
-                              ).copyWith(
-                                backgroundColor:
-                                    WidgetStateProperty.resolveWith<Color?>((
-                                      states,
-                                    ) {
-                                      return null;
-                                    }),
-                              ),
-                          onPressed: () {},
+                          // 3. Implementar la lógica de navegación al presionar el botón
+                          onPressed: _attemptLogin, 
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 14,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            elevation: 0,
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                          ).copyWith(
+                            backgroundColor:
+                                WidgetStateProperty.resolveWith<Color?>((
+                              states,
+                            ) {
+                              return null;
+                            }),
+                          ),
                           child: Ink(
                             decoration: BoxDecoration(
                               gradient: const LinearGradient(
@@ -159,15 +203,15 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              // Card de usuarios sugeridos
+              // Card de usuarios sugeridos (dejado igual)
               Card(
                 elevation: 6,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
                 margin: const EdgeInsets.symmetric(horizontal: 32),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(
                     vertical: 16,
                     horizontal: 16,
                   ),
