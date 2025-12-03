@@ -1,6 +1,5 @@
+import 'package:fastorder/tables_screen.dart';
 import 'package:flutter/material.dart';
-// Asegúrate de que la ruta sea correcta
-import 'home_screen.dart'; 
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,11 +19,11 @@ class _LoginScreenState extends State<LoginScreen> {
     final String password = _passwordController.text;
 
     // Lógica de autenticación simple (puedes reemplazarla con tu lógica real)
-    if (username == 'admin' && password == '1234') {
+    if (username == 'mozo' && password == '1234') {
       // Éxito: Navegar a la pantalla principal
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
+        MaterialPageRoute(builder: (context) => const TablesScreen()), // <--- Aquí
       );
     } else {
       // Fallo: Mostrar un mensaje de error
